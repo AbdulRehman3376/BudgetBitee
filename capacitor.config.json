@@ -1,0 +1,10 @@
+{
+  "appId": "com.budgetbite.app",
+  "appName": "BudgetBite",
+  "webDir": "D:/Projects/MobileDev/BudgetBitee/frontend/public",
+  "backgroundColor": "#0f2419",
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  }
+}

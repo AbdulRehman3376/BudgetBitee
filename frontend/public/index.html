@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f2419">
+  <meta name="description" content="BudgetBite helps students eat well and spend smart.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BudgetBite">
+  <meta name="format-detection" content="telephone=no">
+  <title>BudgetBite</title>
+  <link rel="icon" type="image/svg+xml" href="./budgetbite-logo.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+  <script src="./budget.js" defer></script>
+</head>
+<body>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+      <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0"/><path d="M5 12v8h14v-8"/><path d="M10 20v-4h4v4"/></symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2-2h12v4"/><path d="M4 7v10a2 2 0 0 0 2 2h14V9H6a2 2 0 0 1-2-2z"/><circle cx="16" cy="14" r="1.2"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 2 7 2 7H4s2-1 2-7z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14-4M4 5v4h4M4 13a8 8 0 0 0 14 4M20 19v-4h-4"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+      <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 21V3c-2 1-3.5 4-3.5 8H17"/></symbol>
+      <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 12.5a10 10 0 0 1 3-2M12 20h.01M19 12.5a10 10 0 0 0-8-2.4"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="app" id="app">
+    <!-- Launch screen -->
+    <div class="splash" id="splash" role="status" aria-label="Loading BudgetBite">
+      <img src="./budgetbite-logo.svg" alt="" width="84" height="84">
+      <div class="splash-name">Budget<span>Bite</span></div>
+      <p>Eat well. Spend smart.</p>
+      <span class="splash-bar" aria-hidden="true"></span>
+    </div>
+
+    <main class="screens" id="screens">
+      <!-- HOME -->
+      <section class="screen is-active" data-screen="home" aria-label="Home">
+        <div class="scroll flush" id="homeRoot"></div>
+      </section>
+
+      <!-- EXPLORE -->
+      <section class="screen" data-screen="explore" aria-label="Explore food">
+        <header class="screen-head">
+          <div><p class="eyebrow">Find your meal</p><h1>Explore</h1></div>
+          <button class="icon-btn solid" type="button" data-action="add-dish" aria-label="Add a dish">
+            <svg class="i"><use href="#i-plus"/></svg>
+          </button>
+        </header>
+        <div class="toolbar">
+          <label class="search">
+            <svg class="i"><use href="#i-search"/></svg>
+            <input id="exploreSearch" type="search" placeholder="Search dishes or restaurants" autocomplete="off" enterkeyhint="search">
+          </label>
+          <div class="filters">
+            <label class="filter">
+              <span>Max price</span>
+              <span class="filter-input">Rs.<input id="exploreBudget" type="number" inputmode="numeric" min="0" step="50" placeholder="Any"></span>
+            </label>
+            <label class="filter">
+              <span>Sort by</span>
+              <select id="exploreSort">
+                <option value="recommended">Recommended</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="name">Name: A to Z</option>
+              </select>
+            </label>
+          </div>
+          <div class="chips" id="exploreChips" role="group" aria-label="Food categories"></div>
+        </div>
+        <div class="scroll" id="exploreScroll">
+          <p class="count" id="exploreCount" aria-live="polite"></p>
+          <div id="exploreList"></div>
+          <p class="fine-print">Prices are entered by restaurants and students. Every listing shows its data status.</p>
+        </div>
+      </section>
+
+      <!-- RESTAURANTS -->
+      <section class="screen" data-screen="places" aria-label="Restaurants">
+        <header class="screen-head">
+          <div><p class="eyebrow">Around UMT</p><h1>Restaurants</h1></div>
+          <button class="icon-btn solid" type="button" data-action="add-vendor" aria-label="Add a restaurant">
+            <svg class="i"><use href="#i-plus"/></svg>
+          </button>
+        </header>
+        <div class="toolbar">
+          <label class="search">
+            <svg class="i"><use href="#i-search"/></svg>
+            <input id="placesSearch" type="search" placeholder="Search restaurants" autocomplete="off" enterkeyhint="search">
+          </label>
+        </div>
+        <div class="scroll"><div id="placesList"></div></div>
+      </section>
+
+      <!-- BUDGET -->
+      <section class="screen" data-screen="budget" aria-label="Budget">
+        <div class="scroll" id="budgetRoot"></div>
+      </section>
+
+      <!-- DIARY -->
+      <section class="screen" data-screen="diary" aria-label="Spending diary">
+        <div class="scroll" id="diaryRoot"></div>
+      </section>
+
+      <!-- RESTAURANT DETAIL (pushed view) -->
+      <section class="push" id="vendorView" aria-label="Restaurant details" hidden></section>
+    </main>
+
+    <nav class="tabbar" aria-label="Main navigation">
+      <button class="tab" type="button" data-action="go" data-to="home" aria-current="page"><span class="ico"><svg class="i"><use href="#i-home"/></svg></span>Home</button>
+      <button class="tab" type="button" data-action="go" data-to="explore"><span class="ico"><svg class="i"><use href="#i-search"/></svg></span>Explore</button>
+      <button class="tab" type="button" data-action="go" data-to="places"><span class="ico"><svg class="i"><use href="#i-store"/></svg></span>Places</button>
+      <button class="tab" type="button" data-action="go" data-to="budget"><span class="ico"><svg class="i"><use href="#i-wallet"/></svg></span>Budget</button>
+      <button class="tab" type="button" data-action="go" data-to="diary"><span class="ico"><svg class="i"><use href="#i-calendar"/></svg></span>Diary</button>
+    </nav>
+
+    <!-- Bottom sheet -->
+    <div class="sheet-root" id="sheetRoot" hidden>
+      <div class="sheet-overlay" data-action="sheet-close"></div>
+      <div class="sheet" id="sheet" role="dialog" aria-modal="true">
+        <div class="grab" aria-hidden="true"></div>
+        <div id="sheetBody"></div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+</body>
+</html>

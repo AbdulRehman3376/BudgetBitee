@@ -1,0 +1,66 @@
+﻿venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+data/db/*.db
+data/logs/*
+data/cache/*
+data/tmp/*
+frontend/node_modules/
+frontend/dist/
+.DS_Store
+
+# === PRIVATE INTERNAL DEVELOPMENT DOCUMENTS ===
+docs/PROGRESS.md
+docs/ROADMAP.md
+docs/PROJECT_SCOPE.md
+docs/DATA_POLICY.md
+docs/ARCHITECTURE.md
+
+# Keep all future internal progress and planning notes private
+docs/PRIVATE*
+docs/INTERNAL*
+docs/*PROGRESS*
+docs/*AUDIT*
+
+# Flutter / Dart source files
+**/*.dart
+**/pubspec.yaml
+**/pubspec.lock
+**/analysis_options.yaml
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/flutter_export_environment.sh
+**/Generated.xcconfig
+**/ephemeral/
+
+# Flutter / Dart app folders
+/android/
+/mobile/
+/**/*.dart
+/**/pubspec.yaml
+/**/pubspec.lock
+/**/.dart_tool/
+
+# Dependencies and build files
+/node_modules/
+/venv/
+/build/
+/dist/
+
+# Local data and archives
+/data/
+/BudgetBitee.zip
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Exclude private docs and backup files
+/docs/
+/*.zip
+*.bak
